@@ -11,7 +11,7 @@
       :root {
         --happy-width: 50%;
         --sleep-width: 25%;
-        --hunger-width: 75%;
+        --hunger-width: 100%;
         --health-width: 98%;
       }
       * {
@@ -81,7 +81,7 @@
 
       .food {
         background-color: #d9f8c4;
-        width: var(--hunger-width);
+        width: ;
       }
       .sleep {
         background-color: #f37878;
@@ -118,8 +118,54 @@
     </style>
   </head>
   <body>
-    <div id="main">
-      <h1>-dolphinochi-</h1>
+    <div id="main"></div>
+
+    <script>
+      let foodValue = 100;
+
+      function play() {
+        document.getElementById("tamaImgSrc").src = "img/dolphin-play.gif";
+        setTimeout(() => {
+          document.getElementById("tamaImgSrc").src = "img/dolphin-normal.gif";
+        }, 3000);
+        document
+          .getElementById("happy")
+          .style.setProperty("--happy-width", 80 + "%");
+      }
+      function foodLoss() {
+        foodValue--;
+        document.getElementById("food").style.width = foodValue + "%";
+        if (foodValue === 0) {
+          clearInterval(foodTick);
+        }
+        updateView();
+      }
+
+      const foodTick = setInterval(foodLoss, 1000);
+
+      function eat() {
+        foodValue += 20;
+        document.getElementById("tamaImgSrc").src = "img/dolphin-eat.gif";
+        setTimeout(() => {
+          document.getElementById("tamaImgSrc").src = "img/dolphin-normal.gif";
+        }, 3000);
+        document.getElementById("food").style.width = foodValue + "%";
+        updateView();
+      }
+
+      function sleep() {
+        document.getElementById("tamaImgSrc").src = "img/dolphin-sleep.gif";
+        setTimeout(() => {
+          document.getElementById("tamaImgSrc").src = "img/dolphin-normal.gif";
+        }, 3000);
+        document
+          .getElementById("sleep")
+          .style.setProperty("--sleep-width", 80 + "%");
+      }
+
+      function updateView() {
+        document.getElementById("main").innerHTML = `
+        <h1>-dolphinochi-</h1>
       <div id="tamaImgDiv" class="lofiBorder">
         <img src="img/dolphin-normal.gif" id="tamaImgSrc" />
       </div>
@@ -136,7 +182,7 @@
       <div class="bars" id="foodBars">
         <div class="backgroundBar lofiBorder">
           <span>hunger</span>
-          <div class="foregroundBar food" id="food">${foodValue}</div>
+          <div class="foregroundBar food" id="food" style="width: ${foodValue}%;">${foodValue}%</div>
         </div>
         <button class="addButton lofiBorder" onclick="eat()">eat</button>
       </div>
@@ -156,50 +202,9 @@
         </div>
         <button class="addButton lofiBorder" onclick="play()">play</button>
       </div>
-    </div>
-
-    <script>
-      let foodValue = 100;
-
-      function play() {
-        document.getElementById("tamaImgSrc").src = "img/dolphin-play.gif";
-        setTimeout(() => {
-          document.getElementById("tamaImgSrc").src = "img/dolphin-normal.gif";
-        }, 3000);
-        document
-          .getElementById("happy")
-          .style.setProperty("--happy-width", 80 + "%");
+        `;
       }
-
-      function eat() {
-        document.getElementById("tamaImgSrc").src = "img/dolphin-eat.gif";
-        setTimeout(() => {
-          document.getElementById("tamaImgSrc").src = "img/dolphin-normal.gif";
-        }, 3000);
-        document
-          .getElementById("food")
-          .style.setProperty("--hunger-width", foodValue + "%");
-      }
-      function foodLoss(){
-        foodValue--;
-        if (foodValue === 0){
-            clearInterval(foodTick)
-            
-        }
-        updateView();
-        }
-
-        const foodTick = setInterval(foodLoss, 1000);
-
-      function sleep() {
-        document.getElementById("tamaImgSrc").src = "img/dolphin-sleep.gif";
-        setTimeout(() => {
-          document.getElementById("tamaImgSrc").src = "img/dolphin-normal.gif";
-        }, 3000);
-        document
-          .getElementById("sleep")
-          .style.setProperty("--sleep-width", 80 + "%");
-      }
+      updateView();
     </script>
   </body>
 </html>
