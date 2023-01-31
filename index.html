@@ -81,7 +81,6 @@
 
       .food {
         background-color: #d9f8c4;
-        width: ;
       }
       .sleep {
         background-color: #f37878;
@@ -182,7 +181,7 @@
       <div class="bars" id="foodBars">
         <div class="backgroundBar lofiBorder">
           <span>hunger</span>
-          <div class="foregroundBar food" id="food" style="width: ${foodValue}%;">${foodValue}%</div>
+          <div class="foregroundBar food" id="food" style="width: ${foodValue}%;">${foodValue}/100</div>
         </div>
         <button class="addButton lofiBorder" onclick="eat()">eat</button>
       </div>
