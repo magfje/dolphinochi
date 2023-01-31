@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head><!-- testPhilip -->
+  <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -136,7 +136,7 @@
       <div class="bars" id="foodBars">
         <div class="backgroundBar lofiBorder">
           <span>hunger</span>
-          <div class="foregroundBar food" id="food">75%</div>
+          <div class="foregroundBar food" id="food">${foodValue}</div>
         </div>
         <button class="addButton lofiBorder" onclick="eat()">eat</button>
       </div>
@@ -159,6 +159,8 @@
     </div>
 
     <script>
+      let foodValue = 100;
+
       function play() {
         document.getElementById("tamaImgSrc").src = "img/dolphin-play.gif";
         setTimeout(() => {
@@ -176,8 +178,18 @@
         }, 3000);
         document
           .getElementById("food")
-          .style.setProperty("--hunger-width", 100 + "%");
+          .style.setProperty("--hunger-width", foodValue + "%");
       }
+      function foodLoss(){
+        foodValue--;
+        if (foodValue === 0){
+            clearInterval(foodTick)
+            
+        }
+        updateView();
+        }
+
+        const foodTick = setInterval(foodLoss, 1000);
 
       function sleep() {
         document.getElementById("tamaImgSrc").src = "img/dolphin-sleep.gif";
