@@ -132,7 +132,7 @@
 
     <script>
       /////// MODEL
-      let healthValue = 50;
+      let healthValue = 10;
       let foodValue = 25;
       let sleepValue = 25;
       let happyValue = 25;
@@ -150,32 +150,38 @@
       ///////
       const healthTick = setInterval(healtPointsBar, healthTickRate);
       function healtPointsBar() {
-        if (foodValue < 80 && sleepValue < 80 && happyValue < 80) {
+        if (healthValue == 0) {
+          clearInterval(healthTickRate);
+          foodValue = 0;
+          sleepValue = 0;
+          happyValue = 0;
+        } else if (foodValue < 80 && sleepValue < 80 && happyValue < 80) {
           healthValue--;
-          if (healthValue === 0) {
-            clearInterval(healthTickRate);
-          }
-          healthBarColor();
         } else if (healthValue < 100) {
           healthValue++;
-          healthBarColor();
         }
+        healthBarColor();
       }
 
       let imgSel = imgSrc;
       function healthBarColor() {
         if (healthValue > 50) {
           imgSrc = "img/dolphin-normal.gif";
+          imgSel = imgSrc;
           healthColorValue = "#d9f8c4";
         } else if (healthValue == 0) {
           imgSrc = "img/dolphin-dead.gif";
+          imgSel = imgSrc;
         } else if (healthValue < 20) {
           imgSrc = "img/dolphin-lowHP.gif";
+          imgSel = imgSrc;
           healthColorValue = "#f37878";
         } else if (healthValue <= 50) {
           imgSrc = "img/dolphin-midHP.gif";
+          imgSel = imgSrc;
           healthColorValue = "#f9f9c5";
         }
+        updateView();
       }
 
       /*  function HPBarFunksjon(foodValue, sleepValue, happyValue) {
