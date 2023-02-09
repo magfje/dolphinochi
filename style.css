@@ -1,0 +1,119 @@
+@import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
+
+:root {
+  --happy-width: 50%;
+  --sleep-width: 25%;
+  --hunger-width: 100%;
+  --health-width: 98%;
+}
+* {
+  padding: 0px;
+  margin: 0px;
+  font-family: "VT323", monospace;
+  color: #333;
+  background-color: #d5ebfa;
+}
+
+#main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: auto;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+#tamaImgDiv {
+  width: 20vh;
+  height: 20vh;
+  background-color: transparent;
+  filter: drop-shadow(1px 1px 4px rgb(107, 117, 147));
+  overflow: hidden;
+}
+
+#tamaImgDiv img {
+  width: inherit;
+  height: inherit;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+.container {
+}
+
+.bar1 {
+}
+
+.bar2 {
+}
+
+.bar3 {
+}
+
+.bars {
+  display: flex;
+}
+.backgroundBar span {
+  position: absolute;
+  font-size: 2rem;
+  text-transform: uppercase;
+  transform: translate(0, -2rem);
+  background-color: #fede35;
+  text-align: center;
+  width: 10rem;
+}
+
+.barContainer {
+  height: auto;
+  width: auto;
+}
+
+.backgroundBar {
+  background-color: transparent;
+  width: 30vw;
+  flex-grow: 10rem;
+  height: 3rem;
+}
+.foregroundBar {
+  height: 3rem;
+  text-align: center;
+  font-size: 2rem;
+  transition: 3s ease-in-out;
+}
+
+.food {
+  background-color: #d9f8c4;
+}
+.sleep {
+  background-color: #f37878;
+}
+.happy {
+  background-color: #f9f9c5;
+}
+.health {
+  background-color: #d9f8c4;
+}
+.addButton {
+  width: 10vw;
+  height: 5rem;
+  margin-left: 2rem;
+  background-color: transparent;
+  text-transform: lowercase;
+  font-size: 2rem;
+  cursor: pointer;
+}
+.addButton:hover {
+  filter: drop-shadow(1px 1px 2px rgb(107, 117, 147));
+  color: #fede35;
+}
+
+.lofiBorder {
+  border-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAAqCAYAAADFw8lbAAAAAXNSR0IArs4c6QAAAJVJREFUWEftl7ENwCAMBPEs2X+kzEKUJmniSH8FojhqXkbPvcE14JrnmERaxyikI6Jb40Eb59A16OgPhzramWPqO2dsT7an8GkzTNuEaXV6cT0shN81XA8LPeh3KkpHm3aBjcFCGZXR7LHHqGGhjMroIkazMu/u1Ww71zvXp6zKqHN9yIxz/TZzfXhzz3ZTb+pDdmjqLwZqpiV8COdTAAAAAElFTkSuQmCC")
+    14 / 14px / 0 round;
+  border-width: 14px;
+  border-style: solid;
+  filter: drop-shadow(1px 1px 4px rgb(107, 117, 147));
+}
